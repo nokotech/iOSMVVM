@@ -91,6 +91,96 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6B2E042720AA75920061D960 /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+				6B2E042920AA75C00061D960 /* Application */,
+				6B2E042A20AA760F0061D960 /* PresentationLayer */,
+				6B2E042E20AA766C0061D960 /* DomainLayer */,
+				6B2E043020AA76930061D960 /* DataLayer */,
+			);
+			path = Swift;
+			sourceTree = "<group>";
+		};
+		6B2E042820AA759C0061D960 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				6BBE315820AA5DF000923857 /* Main.storyboard */,
+				6BBE316020AA5DF200923857 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		6B2E042920AA75C00061D960 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				6BBE315420AA5DF000923857 /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		6B2E042A20AA760F0061D960 /* PresentationLayer */ = {
+			isa = PBXGroup;
+			children = (
+				6B2E042C20AA76270061D960 /* ViewController */,
+				6B2E042B20AA761F0061D960 /* ViewModel */,
+				6B2E042D20AA76410061D960 /* Presenter */,
+			);
+			path = PresentationLayer;
+			sourceTree = "<group>";
+		};
+		6B2E042B20AA761F0061D960 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		6B2E042C20AA76270061D960 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6BBE315620AA5DF000923857 /* ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		6B2E042D20AA76410061D960 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		6B2E042E20AA766C0061D960 /* DomainLayer */ = {
+			isa = PBXGroup;
+			children = (
+				6B2E042F20AA76840061D960 /* UseCase */,
+			);
+			path = DomainLayer;
+			sourceTree = "<group>";
+		};
+		6B2E042F20AA76840061D960 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		6B2E043020AA76930061D960 /* DataLayer */ = {
+			isa = PBXGroup;
+			children = (
+				6B2E043120AA76AA0061D960 /* Repository */,
+			);
+			path = DataLayer;
+			sourceTree = "<group>";
+		};
+		6B2E043120AA76AA0061D960 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		6BBE314820AA5DF000923857 = {
 			isa = PBXGroup;
 			children = (
@@ -116,11 +206,9 @@
 		6BBE315320AA5DF000923857 /* iOSMVVM */ = {
 			isa = PBXGroup;
 			children = (
-				6BBE315420AA5DF000923857 /* AppDelegate.swift */,
-				6BBE315620AA5DF000923857 /* ViewController.swift */,
-				6BBE315820AA5DF000923857 /* Main.storyboard */,
+				6B2E042720AA75920061D960 /* Swift */,
+				6B2E042820AA759C0061D960 /* Storyboards */,
 				6BBE315E20AA5DF200923857 /* Assets.xcassets */,
-				6BBE316020AA5DF200923857 /* LaunchScreen.storyboard */,
 				6BBE316320AA5DF200923857 /* Info.plist */,
 				6BBE315B20AA5DF000923857 /* iOSMVVM.xcdatamodeld */,
 			);
@@ -652,7 +740,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T4LEQT4SFD;
 				INFOPLIST_FILE = iOSMVVM/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = tech.takenoko.iOSMVVM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -668,7 +759,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T4LEQT4SFD;
 				INFOPLIST_FILE = iOSMVVM/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = tech.takenoko.iOSMVVM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -685,7 +779,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T4LEQT4SFD;
 				INFOPLIST_FILE = iOSMVVMTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = tech.takenoko.iOSMVVMTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -703,7 +801,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T4LEQT4SFD;
 				INFOPLIST_FILE = iOSMVVMTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = tech.takenoko.iOSMVVMTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -720,7 +822,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T4LEQT4SFD;
 				INFOPLIST_FILE = iOSMVVMUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = tech.takenoko.iOSMVVMUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -737,7 +843,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T4LEQT4SFD;
 				INFOPLIST_FILE = iOSMVVMUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = tech.takenoko.iOSMVVMUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
