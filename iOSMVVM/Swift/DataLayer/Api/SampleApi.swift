@@ -7,18 +7,53 @@
 //
 
 import Foundation
-//import Moya
+import Moya
 
 /**
  * APIの情報
  */
 enum SampleApi {
-    case a
+    case id(id: String)
+    case sample
 }
 
 /**
  *
  */
-//extension SampleApi: TargetType {
-//    
-//}
+extension SampleApi: TargetType {
+    
+    /** ベースURL */
+    var baseURL: URL {
+        return URL(string: "https://raw.githubusercontent.com/nokotech/iOSMVVM/master/MockData")!
+    }
+    
+    /** パス */
+    var path: String {
+        switch self {
+        case .id(let id):   return "/\(id).json"
+        case .sample:       return "/sample.json"
+        }
+    }
+    
+    /** メソッド（GET or POST） */
+    var method: Moya.Method {
+        switch self {
+        case .id, .sample: return .get
+        }
+    }
+    
+    /** モックデータ */
+    var sampleData: Data {
+        return "Stub data".data(using: String.Encoding.utf8)!
+    }
+    
+    /** リクエスト方式 */
+    var task: Task {
+        return Task.requestPlain
+    }
+    
+    /** ヘッダー */
+    var headers: [String : String]? {
+        return nil;
+    }
+}

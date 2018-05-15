@@ -7,13 +7,18 @@
 //
 
 import Foundation
+import Moya
 import RxSwift
+import RxCocoa
 
 class ApiRepository {
     
-//    let sampleApi: SampleApi = SampleApi()
     
-    public func fetch(params: [String : AnyObject]) -> Single<AnyObject>? {
+    
+    public func fetch(params: [String : AnyObject]) -> Single<String>? {
+        let provider = MoyaProvider<SampleApi>()
+        provider.rx.request(SampleApi.sample)
+            .filterSuccessfulStatusCodes()
         return nil
     }
 }
