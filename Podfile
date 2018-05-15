@@ -10,6 +10,7 @@ target 'iOSMVVM' do
   pod 'RxCocoa'
   pod 'R.swift'
   pod 'RealmSwift'
+  pod 'Moya'
 
   target 'iOSMVVMTests' do
     inherit! :search_paths
