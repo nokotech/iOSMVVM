@@ -10,4 +10,20 @@ import Foundation
 
 class Page1Presenter {
     
+    /** ViewModel */
+    public /* fileprivate(set)*/ var viewModel: Page1ViewModel?
+
+    /** Getter, Setter */
+    
+    init() {
+        self.viewModel = Page1ViewModel()
+    }
+    
+    /**
+     * Touch Event
+     */
+    public func onTouchEvent() {
+        NSLog("onTouch. " + viewModel!.text1.value)
+    }
+
 }

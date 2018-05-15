@@ -5,19 +5,34 @@
 //  Created by takenaka on 2018/05/15.
 //  Copyright © 2018年 nokotech inc. All rights reserved.
 //
-
-import Foundation
 import UIKit
+import RxSwift
+import RxCocoa
 
 class Page1ViewController: BaseViewController {
     
+    /** Presenter */
     var presenter: Page1Presenter?
+    
+    /** UI */
+    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var button: UIButton!
     
     /**
      * Dependency Injection
      */
     override func inject() {
-         presenter = Page1Presenter()
+        presenter = Page1Presenter()
+    }
+    
+    /**
+     *data binding
+     */
+    override func databinding() {
+        textField.rx.text.orEmpty.bind(to: presenter!.viewModel!.text1).disposed(by: super.bag)
+        presenter!.viewModel?.text2.asObservable().bind(to: label.rx.text).disposed(by: super.bag)
+        button.rx.tap.asObservable().bind(onNext: { () in self.presenter?.onTouchEvent() }).disposed(by: super.bag)
     }
     
     /**
@@ -25,7 +40,6 @@ class Page1ViewController: BaseViewController {
      */
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
     /**

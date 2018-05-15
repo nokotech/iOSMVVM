@@ -6,16 +6,16 @@ target 'iOSMVVM' do
   use_frameworks!
 
   # Pods for iOSMVVM
-  pod 'RxSwift',    '~> 4.0'
-  pod 'RxCocoa',    '~> 4.0'
+  pod 'RxSwift'
+  pod 'RxCocoa'
   pod 'R.swift'
   pod 'RealmSwift'
 
   target 'iOSMVVMTests' do
     inherit! :search_paths
     # Pods for testing
-    pod 'RxBlocking', '~> 4.0'
-    pod 'RxTest',     '~> 4.0'
+    pod 'RxBlocking'
+    pod 'RxTest'
   end
 
   target 'iOSMVVMUITests' do

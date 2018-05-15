@@ -6,18 +6,33 @@
 //  Copyright © 2018年 nokotech inc. All rights reserved.
 //
 
+import Foundation
 import UIKit
+import RxSwift
+import RxCocoa
 
 class BaseViewController: UIViewController {
+    
+    /** */
+    var bag = RxSwift.DisposeBag()
     
     /**
      * Abs
      */
     func inject() {}
+    
+    /**
+     *
+     */
+    func databinding() {}
 
+    /**
+     *
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
-        inject();
+        inject()
+        databinding()
     }
     
     override func viewDidAppear(_ animated: Bool) {
