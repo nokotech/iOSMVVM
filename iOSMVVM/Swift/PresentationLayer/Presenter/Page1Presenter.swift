@@ -11,14 +11,22 @@ import RxSwift
 import RxCocoa
 import NSObject_Rx
 
-class Page1Presenter: NSObject {
+class Page1Presenter: BasePresenter {
     
     /** ViewModel */
-    public let viewModel: Page1ViewModel = Page1ViewModel()
+    public var viewModel: Page1ViewModel!
     
     /** Usecase */
-    private let usecase: Page1UsecaseProtocol  = Page1Usecase()
-
+    private var usecase: Page1UsecaseProtocol!
+    
+    /**
+     * Dependency Injection
+     */
+    override func inject() {
+        viewModel = Page1ViewModel()
+        usecase = Page1Usecase()
+    }
+    
     /**
      * Touch Event
      */

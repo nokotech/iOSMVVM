@@ -11,23 +11,32 @@ import RxCocoa
 import RxSwift
 import NSObject_Rx
 
+/// Page1のユースケースのインターフェース
 protocol Page1UsecaseProtocol {
     
-    /// <#Description#>
+    /// クリック時に画面情報を更新する
     ///
-    /// - Returns: <#return value description#>
+    /// - Returns: 画面情報
     func onClickToButton() -> Observable<FetchEntity>;
 }
+// MARK: -
 
+/// Page1のユースケースの実装クラス
 class Page1Usecase: BaseUsecase, Page1UsecaseProtocol {
     
-    /** Repository */
-    private let apiRepository: ApiRepositoryProtocol = ApiRepository.instance
+    /// Repository
+    private var apiRepository: ApiRepositoryProtocol!
     
-    /** Translater */
-    private let translater = Page1Translater.instance
+    /// Translater
+    private var translater: Page1TranslaterProtocl!
     
-    ///
+    /// Dependency Injection
+    override func inject() {
+        apiRepository = ApiRepository.instance
+        translater = Page1Translater.instance
+    }
+    
+    /// クリック時に画面情報を更新する
     func onClickToButton() -> Observable<FetchEntity> {
         let dic: [String: Any] = [
             "key1": "value1",

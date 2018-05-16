@@ -8,11 +8,14 @@
 
 import Foundation
 
-class Page1Translater: NSObject {
+protocol Page1TranslaterProtocl {
+    func translateFetch(fetchEntity: FetchEntity, watchEntity: WatchEntity) -> FetchEntity
+}
+
+class Page1Translater: Page1TranslaterProtocl {
     
     /// インスタンス
-    static let instance = Page1Translater()
-    
+    static let instance: Page1TranslaterProtocl = Page1Translater()
     
     ///
     func translateFetch(fetchEntity: FetchEntity, watchEntity: WatchEntity) -> FetchEntity {

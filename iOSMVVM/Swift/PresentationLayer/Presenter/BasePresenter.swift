@@ -1,5 +1,5 @@
 //
-//  BaseUsecase.swift
+//  BasePresenter.swift
 //  iOSMVVM
 //
 //  Created by takenaka on 2018/05/16.
@@ -8,14 +8,15 @@
 
 import Foundation
 
-class BaseUsecase: NSObject {
+class BasePresenter: NSObject {
     
     override init() {
         super.init()
         inject()
     }
     
-    /// Dependency Injection
+    /**
+     * Dependency Injection
+     */
     func inject() {}
-    
 }
