@@ -14,5 +14,4 @@ class Page1ViewModel {
     
     let text1: BehaviorRelay<String> = BehaviorRelay(value: "sample text1")
     let text2: BehaviorRelay<String> = BehaviorRelay(value: "sample text2")
-    
 }

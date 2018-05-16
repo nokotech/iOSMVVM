@@ -18,17 +18,37 @@ class BaseReopository: NSObject {
     typealias OnSuccess<U: Decodable> = ((U) -> Void)?
     typealias OnError = ((Error) -> Void)?
     
-    /**
-     * APIコール
-     */
-    func apiRequest<T, U: Decodable>(_ provider: MoyaProvider<T>, _ request: T, onSuccess: OnSuccess<U>, onError: OnError) {
+    /// APIコール
+    ///
+    /// - Parameters:
+    ///   - provider:
+    ///   - request:
+    func apiRequest<T, U: Decodable>(_ provider: MoyaProvider<T>, _ request: T) -> Single<U> {
+        return provider.rx.request(request).filterSuccessfulStatusCodes().map(U.self)
+    }
+    
+    /// APIコール
+    ///
+    /// - Parameters:
+    ///   - provider:
+    ///   - request:
+    ///   - onSuccess:
+    ///   - onError:
+    func apiRequestOnHandler<T, U: Decodable>(_ provider: MoyaProvider<T>, _ request: T, onSuccess: OnSuccess<U>, onError: OnError) {
         provider.rx.request(request).filterSuccessfulStatusCodes().map(U.self).subscribe(onSuccess: onSuccess, onError: onError).disposed(by: rx.disposeBag)
     }
     
-    /**
-     * エラーハンドラー
-     */
-    func errorHandler(error: Error) {
+    /// OKハンドラー
+    ///
+    /// - Parameter error: error
+    func successHandler<U: Decodable>(_ response: U) {
+        NSLog("success \(response)")
+    }
+    
+    /// NGハンドラー
+    ///
+    /// - Parameter error: error
+    func errorHandler(_ error: Error) {
         NSLog("error \(error)")
     }
 }

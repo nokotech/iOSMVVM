@@ -31,8 +31,8 @@ class Page1ViewController: BaseViewController {
      *data binding
      */
     override func databinding() {
-        textField.rx.text.orEmpty.bind(to: presenter!.viewModel!.text1).disposed(by: rx.disposeBag)
-        presenter!.viewModel?.text2.asObservable().bind(to: label.rx.text).disposed(by: rx.disposeBag)
+        textField.rx.text.orEmpty.bind(to: presenter!.viewModel.text1).disposed(by: rx.disposeBag)
+        presenter!.viewModel.text2.asObservable().bind(to: label.rx.text).disposed(by: rx.disposeBag)
         button.rx.tap.asObservable().bind(onNext: { () in self.presenter?.onTouchEvent() }).disposed(by: rx.disposeBag)
     }
     

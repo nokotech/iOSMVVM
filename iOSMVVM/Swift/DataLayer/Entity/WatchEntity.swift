@@ -1,5 +1,5 @@
 //
-//  FetchEntity.swift
+//  WatchEntity.swift
 //  iOSMVVM
 //
 //  Created by takenaka on 2018/05/16.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct FetchEntity: Codable {
+struct WatchEntity: Codable {
     let result: String
 }

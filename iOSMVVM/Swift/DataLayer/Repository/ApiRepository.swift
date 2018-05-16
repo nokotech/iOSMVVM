@@ -12,23 +12,38 @@ import RxSwift
 import RxCocoa
 import NSObject_Rx
 
-class ApiRepository: BaseReopository {
+protocol ApiRepositoryProtocol {
+    func fetch(params: [String : Any]) -> Single<FetchEntity>?
+    func watch(params: [String : Any]) -> Single<WatchEntity>?
+}
+
+class ApiRepository: BaseReopository, ApiRepositoryProtocol {
     
-    /** インスタンス */
-    static let instance = ApiRepository()
+    /// インスタンス
+    static let instance: ApiRepositoryProtocol = ApiRepository()
     
-    /** Provider */
+    /// Provider
     private let sampleApiProvider = MoyaProvider<SampleApi>()
-    
-    /**
-     * 処理
-     */
+
+    ///
     public func fetch(params: [String : Any]) -> Single<FetchEntity>? {
-        let successHandler = {(response: FetchResponse) in
-            NSLog("response \(response)")
-        }
-        super.apiRequest(sampleApiProvider, .SAMPLE, onSuccess: successHandler, onError: super.errorHandler)
-        return nil
+        return super.apiRequest(self.sampleApiProvider, .SAMPLE)
+    }
+    
+    ///
+    public func watch(params: [String : Any]) -> Single<WatchEntity>? {
+        return Single<WatchEntity>.create(subscribe: { (observer) -> Disposable in
+            let successHandler = {(entity: WatchEntity) in
+                super.successHandler(entity)
+                observer(SingleEvent.success(entity))
+            }
+            let errorHandler = {(error: Error) in
+                super.errorHandler(error)
+                observer(SingleEvent.error(error))
+            }
+            super.apiRequestOnHandler(self.sampleApiProvider, .SAMPLE, onSuccess: successHandler, onError: errorHandler)
+            return Disposables.create()
+        })
     }
     
 //    func temp() {

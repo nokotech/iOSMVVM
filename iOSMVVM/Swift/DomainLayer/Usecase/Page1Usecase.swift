@@ -7,16 +7,55 @@
 //
 
 import Foundation
+import RxCocoa
 import RxSwift
+import NSObject_Rx
 
-class Page1Usecase: NSObject {
+protocol Page1UsecaseProtocol {
     
-    func onClickToButton() -> Observable<FetchEntity>? {
+    /// <#Description#>
+    ///
+    /// - Returns: <#return value description#>
+    func onClickToButton() -> Observable<FetchEntity>;
+}
+
+class Page1Usecase: BaseUsecase, Page1UsecaseProtocol {
+    
+    /** Repository */
+    private let apiRepository: ApiRepositoryProtocol = ApiRepository.instance
+    
+    /** Translater */
+    private let translater = Page1Translater.instance
+    
+    ///
+    func onClickToButton() -> Observable<FetchEntity> {
         let dic: [String: Any] = [
             "key1": "value1",
             "key2": "value2"
         ]
-        return ApiRepository.instance.fetch(params: dic)?.asObservable()
+        return Observable<FetchEntity>
+        .zip(
+            self.apiRepository.fetch(params: dic)!.asObservable(),
+            self.apiRepository.watch(params: dic)!.asObservable(),
+            // レスポンス
+            resultSelector: translater.translateFetch
+        )
+        .map({ (fetchEntity) -> FetchEntity in
+            NSLog("== \(fetchEntity)")
+            return fetchEntity
+        })
+//        return Observable.create({ (observar) -> Disposable in
+//
+//            self.apiRepository.fetch(params: dic)?.subscribe(
+//                onSuccess: { (entity) in
+//                    NSLog("onClickToButton.onSuccess \(entity)")
+//                    observar.on(.next(entity))
+//            },
+//                onError: { (error) in
+//                    NSLog("onClickToButton.onError \(error)")
+//                    observar.on(.error(error))
+//            }).disposed(by: self.rx.disposeBag)
+//            return Disposables.create()
+//        })
     }
-    
 }

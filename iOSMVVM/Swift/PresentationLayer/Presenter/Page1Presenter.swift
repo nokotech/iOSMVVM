@@ -7,27 +7,32 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
+import NSObject_Rx
 
-class Page1Presenter {
+class Page1Presenter: NSObject {
     
     /** ViewModel */
-    public /* fileprivate(set)*/ var viewModel: Page1ViewModel?
+    public let viewModel: Page1ViewModel = Page1ViewModel()
     
     /** Usecase */
-    private let usecase = Page1Usecase()
+    private let usecase: Page1UsecaseProtocol  = Page1Usecase()
 
-    /** Getter, Setter */
-    
-    init() {
-        self.viewModel = Page1ViewModel()
-    }
-    
     /**
      * Touch Event
      */
     public func onTouchEvent() {
-        NSLog("onTouch. %@", viewModel!.text1.value)
-        _ = self.usecase.onClickToButton()
+        NSLog("onTouch. %@", viewModel.text1.value)
+        usecase.onClickToButton().subscribe(onNext: { (entity) in
+            //
+            self.viewModel.text2.accept(entity.result)
+        }, onError: { (error) in
+            // 失敗時はインジケータ非表示
+            // hideIndicator()
+        }, onCompleted: {
+            // 失敗時はインジケータ非表示
+            // hideIndicator()
+        }, onDisposed: nil).disposed(by: rx.disposeBag)
     }
-
 }

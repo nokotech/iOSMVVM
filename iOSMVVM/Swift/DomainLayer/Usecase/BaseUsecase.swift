@@ -1,5 +1,5 @@
 //
-//  FetchEntity.swift
+//  BaseUsecase.swift
 //  iOSMVVM
 //
 //  Created by takenaka on 2018/05/16.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct FetchEntity: Codable {
-    let result: String
+open class BaseUsecase: NSObject {
+    
 }
