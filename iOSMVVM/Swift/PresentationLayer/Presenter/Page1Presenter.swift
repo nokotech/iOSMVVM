@@ -12,6 +12,9 @@ class Page1Presenter {
     
     /** ViewModel */
     public /* fileprivate(set)*/ var viewModel: Page1ViewModel?
+    
+    /** Usecase */
+    private let usecase = Page1Usecase()
 
     /** Getter, Setter */
     
@@ -23,7 +26,8 @@ class Page1Presenter {
      * Touch Event
      */
     public func onTouchEvent() {
-        NSLog("onTouch. " + viewModel!.text1.value)
+        NSLog("onTouch. %@", viewModel!.text1.value)
+        _ = self.usecase.onClickToButton()
     }
 
 }

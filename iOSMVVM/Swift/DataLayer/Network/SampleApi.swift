@@ -13,8 +13,8 @@ import Moya
  * APIの情報
  */
 enum SampleApi {
-    case id(id: String)
-    case sample
+    case ID(id: String)
+    case SAMPLE
 }
 
 /**
@@ -30,15 +30,15 @@ extension SampleApi: TargetType {
     /** パス */
     var path: String {
         switch self {
-        case .id(let id):   return "/\(id).json"
-        case .sample:       return "/sample.json"
+        case .ID(let id):   return "/\(id).json"
+        case .SAMPLE:       return "/sample.json"
         }
     }
     
     /** メソッド（GET or POST） */
     var method: Moya.Method {
         switch self {
-        case .id, .sample: return .get
+        case .ID, .SAMPLE: return .get
         }
     }
     

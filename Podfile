@@ -8,6 +8,7 @@ target 'iOSMVVM' do
   # Pods for iOSMVVM
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'NSObject+Rx'
   pod 'R.swift'
   pod 'RealmSwift'
   pod 'Moya/RxSwift'

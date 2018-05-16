@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import NSObject_Rx
 
 class Page1ViewController: BaseViewController {
     
@@ -30,9 +31,9 @@ class Page1ViewController: BaseViewController {
      *data binding
      */
     override func databinding() {
-        textField.rx.text.orEmpty.bind(to: presenter!.viewModel!.text1).disposed(by: super.bag)
-        presenter!.viewModel?.text2.asObservable().bind(to: label.rx.text).disposed(by: super.bag)
-        button.rx.tap.asObservable().bind(onNext: { () in self.presenter?.onTouchEvent() }).disposed(by: super.bag)
+        textField.rx.text.orEmpty.bind(to: presenter!.viewModel!.text1).disposed(by: rx.disposeBag)
+        presenter!.viewModel?.text2.asObservable().bind(to: label.rx.text).disposed(by: rx.disposeBag)
+        button.rx.tap.asObservable().bind(onNext: { () in self.presenter?.onTouchEvent() }).disposed(by: rx.disposeBag)
     }
     
     /**

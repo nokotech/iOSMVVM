@@ -10,15 +10,40 @@ import Foundation
 import Moya
 import RxSwift
 import RxCocoa
+import NSObject_Rx
 
-class ApiRepository {
+class ApiRepository: BaseReopository {
     
+    /** インスタンス */
+    static let instance = ApiRepository()
     
+    /** Provider */
+    private let sampleApiProvider = MoyaProvider<SampleApi>()
     
-    public func fetch(params: [String : AnyObject]) -> Single<String>? {
-        let provider = MoyaProvider<SampleApi>()
-        provider.rx.request(SampleApi.sample)
-            .filterSuccessfulStatusCodes()
+    /**
+     * 処理
+     */
+    public func fetch(params: [String : Any]) -> Single<FetchEntity>? {
+        let successHandler = {(response: FetchResponse) in
+            NSLog("response \(response)")
+        }
+        super.apiRequest(sampleApiProvider, .SAMPLE, onSuccess: successHandler, onError: super.errorHandler)
         return nil
     }
+    
+//    func temp() {
+//        sampleApiProvider
+//            .rx
+//            .request(SampleApi.sample)
+//            .filterSuccessfulStatusCodes()
+//            .map(FetchResponse.self)
+//            .subscribe(
+//                onSuccess: { (response) in
+//                    NSLog("response \(response)")
+//            },
+//                onError: { (error) in
+//                    NSLog("error \(error)")
+//            })
+//            .disposed(by: rx.disposeBag)
+//    }
 }

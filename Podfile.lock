@@ -6,6 +6,8 @@ PODS:
   - Moya/RxSwift (11.0.2):
     - Moya/Core
     - RxSwift (~> 4.0)
+  - NSObject+Rx (4.3.0):
+    - RxSwift (~> 4.0)
   - R.swift (4.0.0):
     - R.swift.Library (~> 4.0.0)
   - R.swift.Library (4.0.0)
@@ -25,6 +27,7 @@ PODS:
 
 DEPENDENCIES:
   - Moya/RxSwift
+  - NSObject+Rx
   - R.swift
   - RealmSwift
   - RxBlocking
@@ -35,6 +38,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   Moya: a725035953bc1c0eb1be505ab903984501d82440
+  NSObject+Rx: 9a5eeff5e08156f849fa973514456f28eef08742
   R.swift: d6a5ec2f55a8441dc0ed9f1f8b37d7d11ae85c66
   R.swift.Library: c3af34921024333546e23b70e70d0b4e0cffca75
   Realm: 0378021c424e4e2bd6a0e63b27881e929d9b9ad1
@@ -45,6 +49,6 @@ SPEC CHECKSUMS:
   RxSwift: e49536837d9901277638493ea537394d4b55f570
   RxTest: e634f15fd2c2cd0e0120132ef7a4f7be69ad0393
 
-PODFILE CHECKSUM: 2b01be95d1be705ba740cc4a8aca1ee804e96329
+PODFILE CHECKSUM: 99dc830468d017f564b4bb7a0e7667f26dfb128d
 
 COCOAPODS: 1.4.0

@@ -13,9 +13,6 @@ import RxCocoa
 
 class BaseViewController: UIViewController {
     
-    /** */
-    var bag = RxSwift.DisposeBag()
-    
     /**
      * Abs
      */

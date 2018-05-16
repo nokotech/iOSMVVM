@@ -7,7 +7,16 @@
 //
 
 import Foundation
+import RxSwift
 
-class Page1Usecase {
+class Page1Usecase: NSObject {
+    
+    func onClickToButton() -> Observable<FetchEntity>? {
+        let dic: [String: Any] = [
+            "key1": "value1",
+            "key2": "value2"
+        ]
+        return ApiRepository.instance.fetch(params: dic)?.asObservable()
+    }
     
 }
