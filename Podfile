@@ -10,7 +10,7 @@ target 'iOSMVVM' do
   pod 'RxCocoa'
   pod 'NSObject+Rx'
   pod 'R.swift'
-  pod 'RealmSwift'
+  # pod 'RealmSwift'
   pod 'Moya/RxSwift'
 
   target 'iOSMVVMTests' do

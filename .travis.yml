@@ -14,10 +14,14 @@ cache:
   - bundler
   - cocoapods
 before_install:
+  - brew update
   - git submodule update --init --recursive
+  - gem install cocoapods -v '1.4.0'
+  - pod install --repo-update
 script:
-  - pod lib lint
   - set -o pipefail
   - xcodebuild test -workspace iOSMVVM.xcworkspace -scheme iOSMVVM -configuration Debug -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 6s" | xcpretty -c
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
 notifications:
   email: false
