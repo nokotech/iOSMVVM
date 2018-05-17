@@ -9,12 +9,16 @@
 * NSObject+Rx
 * R.swift
 * RealmSwift
-* Moya/RxSwift
+* Moya
 * RxBlocking
 * RxTest
 
-## Source
+## CI
+* Travis CI (https://travis-ci.org/nokotech/iOSMVVM)
+* Codecov (https://codecov.io/)
 
+## Source
+TODO...
 
 <p align="center">
   <br>
