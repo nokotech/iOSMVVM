@@ -17,7 +17,7 @@ class Page1Presenter: BasePresenter {
     public var viewModel: Page1ViewModel!
     
     /** Usecase */
-    private var usecase: Page1UsecaseProtocol!
+    internal var usecase: Page1UsecaseProtocol!
     
     /**
      * Dependency Injection

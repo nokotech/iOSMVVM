@@ -29,7 +29,7 @@ protocol ApiRepositoryProtocol {
 // MARK: -
 
 /// API処理の実装
-class ApiRepository: BaseReopository, ApiRepositoryProtocol {
+class ApiRepository: BaseRepository, ApiRepositoryProtocol {
     
     /// インスタンス
     static let instance: ApiRepositoryProtocol = ApiRepository()

@@ -17,5 +17,4 @@ class BaseUsecase: NSObject {
     
     /// Dependency Injection
     func inject() {}
-    
 }

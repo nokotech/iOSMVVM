@@ -13,7 +13,7 @@ import RxCocoa
 import NSObject_Rx
 
 
-class BaseReopository: NSObject {
+class BaseRepository: NSObject {
     
     typealias OnSuccess<U: Decodable> = ((U) -> Void)?
     typealias OnError = ((Error) -> Void)?

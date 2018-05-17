@@ -25,13 +25,14 @@ protocol Page1UsecaseProtocol {
 class Page1Usecase: BaseUsecase, Page1UsecaseProtocol {
     
     /// Repository
-    private var apiRepository: ApiRepositoryProtocol!
+    internal var apiRepository: ApiRepositoryProtocol!
     
     /// Translater
-    private var translater: Page1TranslaterProtocl!
+    internal var translater: Page1TranslaterProtocl!
     
     /// Dependency Injection
     override func inject() {
+        super.inject()
         apiRepository = ApiRepository.instance
         translater = Page1Translater.instance
     }

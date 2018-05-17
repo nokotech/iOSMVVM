@@ -24,6 +24,7 @@ class Page1ViewController: BaseViewController {
      * Dependency Injection
      */
     override func inject() {
+        super.inject()
         presenter = Page1Presenter()
     }
     
@@ -31,6 +32,7 @@ class Page1ViewController: BaseViewController {
      *data binding
      */
     override func databinding() {
+        super.databinding()
         textField.rx.text.orEmpty.bind(to: presenter!.viewModel.text1).disposed(by: rx.disposeBag)
         presenter!.viewModel.text2.asObservable().bind(to: label.rx.text).disposed(by: rx.disposeBag)
         button.rx.tap.asObservable().bind(onNext: { () in self.presenter?.onTouchEvent() }).disposed(by: rx.disposeBag)

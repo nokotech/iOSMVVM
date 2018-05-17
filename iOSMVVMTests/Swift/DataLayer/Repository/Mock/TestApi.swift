@@ -1,8 +1,8 @@
 //
-//  SampleApi.swift
-//  iOSMVVM
+//  MoyaTest.swift
+//  iOSMVVMTests
 //
-//  Created by takenaka on 2018/05/15.
+//  Created by takenaka on 2018/05/17.
 //  Copyright © 2018年 nokotech inc. All rights reserved.
 //
 
@@ -11,15 +11,14 @@ import Moya
 /**
  * APIの情報
  */
-enum SampleApi {
-    case ID(id: String)
-    case SAMPLE
+enum TestApi {
+    case a()
 }
 
 /**
  *
  */
-extension SampleApi: TargetType {
+extension TestApi: TargetType {
     
     /** ベースURL */
     var baseURL: URL {
