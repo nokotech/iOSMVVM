@@ -17,7 +17,8 @@ protocol Page1UsecaseProtocol {
     /// クリック時に画面情報を更新する
     ///
     /// - Returns: 画面情報
-    func onClickToButton() -> Observable<FetchEntity>;
+    typealias OnClickToButton = (name: String, entity: FetchEntity)
+    func onClickToButton() -> Observable<OnClickToButton>;
 }
 // MARK: -
 
@@ -38,7 +39,7 @@ class Page1Usecase: BaseUsecase, Page1UsecaseProtocol {
     }
     
     /// クリック時に画面情報を更新する
-    func onClickToButton() -> Observable<FetchEntity> {
+    func onClickToButton() -> Observable< (name: String, entity: FetchEntity) > {
         let dic: [String: Any] = [
             "key1": "value1",
             "key2": "value2"
@@ -50,9 +51,9 @@ class Page1Usecase: BaseUsecase, Page1UsecaseProtocol {
             // レスポンス
             resultSelector: translater.translateFetch
         )
-        .map({ (fetchEntity) -> FetchEntity in
+        .map({ (fetchEntity) -> (String, FetchEntity) in
             NSLog("== \(fetchEntity)")
-            return fetchEntity
+            return (name: "", entity: fetchEntity)
         })
 //        return Observable.create({ (observar) -> Disposable in
 //

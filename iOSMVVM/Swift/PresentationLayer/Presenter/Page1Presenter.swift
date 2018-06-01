@@ -32,7 +32,7 @@ class Page1Presenter: BasePresenter {
      */
     public func onTouchEvent() {
         NSLog("onTouch. %@", viewModel.text1.value)
-        usecase.onClickToButton().subscribe(onNext: { (entity) in
+        usecase.onClickToButton().subscribe(onNext: { (str, entity) in
             //
             self.viewModel.text2.accept(entity.result)
         }, onError: { (error) in
