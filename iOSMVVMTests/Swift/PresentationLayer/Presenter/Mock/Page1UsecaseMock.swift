@@ -22,9 +22,10 @@ class Page1UsecaseMock: Page1UsecaseProtocol {
     }
     
     /// クリック時に画面情報を更新する
-    func onClickToButton() -> Observable<FetchEntity> {
-        let xs: TestableObservable<FetchEntity> = scheduler!.createHotObservable([
-            Recorded.next(100, FetchEntity(result: "OK")),
+    func onClickToButton() -> Observable<OnClickToButton> {
+        let onClickToButton: OnClickToButton = OnClickToButton("", FetchEntity(result: "OK"))
+        let xs: TestableObservable<OnClickToButton> = scheduler!.createHotObservable([
+            Recorded.next(100, onClickToButton),
             Recorded.completed(200),
             ])
         return xs.asObservable()
